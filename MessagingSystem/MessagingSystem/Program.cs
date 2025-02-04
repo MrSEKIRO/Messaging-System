@@ -7,6 +7,7 @@ using MessagingSystem.Configs;
 using MessagingSystem.Hubs;
 using MessagingSystem.Modules.Group.Actors;
 using MessagingSystem.Modules.Messaging.Actors;
+using MessagingSystem.Modules.Notification.Actors;
 using MessagingSystem.Modules.User.Actors;
 using Microsoft.OpenApi.Models;
 using Petabridge.Cmd.Cluster;
@@ -65,6 +66,10 @@ builder.Services.AddAkka(akkaConfig.ActorSystemName, (builder, provider) =>
 			// message router actor
 			var messageRouterActor = system.ActorOf(Props.Create(() => new MessageRouterActor(serviceProvider)), "message-router");
 			registry.Register<MessageRouterActor>(messageRouterActor);
+
+			// notification actor
+			var notificationActor = system.ActorOf(Props.Create(() => new NotificationManagerActor(serviceProvider)), "notification-management");
+			registry.Register<NotificationManagerActor>(notificationActor);
 		});
 });
 
