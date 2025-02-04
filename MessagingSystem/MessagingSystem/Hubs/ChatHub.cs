@@ -1,10 +1,9 @@
 ﻿
 using Akka.Actor;
 using Akka.Hosting;
-using MessagingSystem.Actors;
+using MessagingSystem.Modules.Messaging.Actors;
+using MessagingSystem.Modules.User.Actors;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.Win32;
-using System.Security.Cryptography;
 
 namespace MessagingSystem.Hubs
 {
